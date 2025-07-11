@@ -273,9 +273,10 @@ const AddStudentForm: React.FC = () => {
 
   const shiftOptions: ShiftOption[] = shifts.map(shift => {
     const isAvailable = availableShifts.some(s => s.id === shift.id);
+    const description = shift.description || 'No description';
     const label = formData.seatId !== null
-      ? `${shift.title} (${shift.time} on ${shift.eventDate}) ${isAvailable ? '(Available)' : '(Assigned)'}`
-      : `${shift.title} (${shift.time} on ${shift.eventDate})`;
+      ? `${shift.title} (${shift.time} on ${shift.eventDate}) - ${description} ${isAvailable ? '(Available)' : '(Assigned)'}`
+      : `${shift.title} (${shift.time} on ${shift.eventDate}) - ${description}`;
     return {
       value: shift.id,
       label,
@@ -542,7 +543,7 @@ const AddStudentForm: React.FC = () => {
             isLoading={loadingShifts}
             placeholder="Select a shift"
             className="w-full"
-            isDisabled={availableShifts.length === 0} // Updated to allow shift selection even when seat is none
+            isDisabled={availableShifts.length === 0}
           />
         </div>
         <div>

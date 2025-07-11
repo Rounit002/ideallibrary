@@ -149,7 +149,6 @@ const ExpiredMemberships = () => {
     })();
   }, [selectedBranchFilter]);
 
-
   useEffect(() => {
     if (selectedShift && selectedStudent) {
       const fetchSeatsForShift = async () => {
@@ -315,6 +314,8 @@ const ExpiredMemberships = () => {
                 <TableRow>
                   <TableHead>Name</TableHead>
                   <TableHead>Registration Number</TableHead>
+                  <TableHead>Seat Number</TableHead>
+                  <TableHead>Total Fee</TableHead>
                   <TableHead>Email</TableHead>
                   <TableHead>Phone</TableHead>
                   <TableHead>Expiry</TableHead>
@@ -333,6 +334,8 @@ const ExpiredMemberships = () => {
                     <TableRow key={student.id}>
                       <TableCell>{student.name}</TableCell>
                       <TableCell>{student.registrationNumber || 'N/A'}</TableCell>
+                      <TableCell>{student.seatNumber || 'N/A'}</TableCell>
+                      <TableCell>{student.totalFee ? `₹${student.totalFee.toFixed(2)}` : 'N/A'}</TableCell>
                       <TableCell>{student.email}</TableCell>
                       <TableCell>{student.phone}</TableCell>
                       <TableCell>{formatDate(student.membershipEnd)}</TableCell>
