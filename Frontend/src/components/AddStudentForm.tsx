@@ -275,8 +275,8 @@ const AddStudentForm: React.FC = () => {
     const isAvailable = availableShifts.some(s => s.id === shift.id);
     const description = shift.description || 'No description';
     const label = formData.seatId !== null
-      ? `${shift.title} (${shift.time} on ${shift.eventDate}) - ${description} ${isAvailable ? '(Available)' : '(Assigned)'}`
-      : `${shift.title} (${shift.time} on ${shift.eventDate}) - ${description}`;
+      ? `${shift.title}  - ${description} ${isAvailable ? '(Available)' : '(Assigned)'}`
+      : `${shift.title}  - ${description}`;
     return {
       value: shift.id,
       label,
